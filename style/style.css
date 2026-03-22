@@ -196,6 +196,104 @@ button {
 }
 
 /* ==========================================================================
+   2.1 MEDIA QUERIES DO HEADER / MENU MOBILE
+   ========================================================================== */
+@media (width <=1024px) {
+    .container-nav {
+        padding: 1rem clamp(1rem, 3vw, 2rem);
+    }
+}
+
+@media (width <=768px) {
+
+    /* Mostra o botão Hambúrguer */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        width: 40px;
+        height: 40px;
+        z-index: 1001;
+    }
+
+    .menu-toggle .linha {
+        display: block;
+        width: 28px;
+        height: 2px;
+        background-color: var(--cor-primaria);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        transform-origin: center;
+    }
+
+    /* Animação do X */
+    .menu-toggle[aria-expanded="true"] .linha:nth-child(1) {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] .linha:nth-child(2) {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+
+    /* Esconde o menu e prepara para abrir na lateral */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100vw;
+        height: 100dvh;
+        background-color: var(--cor-fundo-suave);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+    }
+
+    .nav-menu.ativo {
+        right: 0;
+    }
+
+    .nav-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        font-family: var(--fonte-titulos);
+    }
+
+    .btn-cta-nav {
+        max-width: 320px;
+        font-size: 1.125rem;
+        padding: 1rem 2rem;
+    }
+}
+
+@media (width <=360px) {
+    .container-nav {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-img {
+        max-width: 130px;
+    }
+
+    .nav-link {
+        font-size: 1.25rem;
+    }
+
+    .btn-cta-nav {
+        padding: 0.8rem;
+        font-size: 1rem;
+        max-width: 280px;
+    }
+}
+
+/* ==========================================================================
    3. HERO SECTION (DRA. SOLO)
    ========================================================================== */
 
