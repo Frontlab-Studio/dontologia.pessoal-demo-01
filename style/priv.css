@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* ==========================================================================
+   1. BASE E VARIÁVEIS (DESIGN BOUTIQUE)
+   ========================================================================== */
 :root {
     --cor-fundo: #FAFAFA;
     /* Off-White Premium */
@@ -25,6 +28,81 @@
     --container-width: 1200px;
     --padding-container: clamp(1rem, 5vw, 2rem);
     --transicao-padrao: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    touch-action: manipulation;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--fonte-padrao);
+    font-size: var(--tamanho-texto);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-primaria);
+    text-wrap: balance;
+}
+
+img,
+picture,
+svg,
+video {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transicao-padrao);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 .pagina-legal {
