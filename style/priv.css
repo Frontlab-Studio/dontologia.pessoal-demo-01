@@ -5,19 +5,14 @@
    ========================================================================== */
 :root {
     --cor-fundo: #FAFAFA;
-    /* Off-White Premium */
     --cor-fundo-suave: #F0EAE6;
-    /* Nude Suave */
     --cor-fundo-header: rgba(250, 250, 250, 0.95);
 
     --cor-texto: #2C3E50;
-    /* Azul Petróleo Escuro (Leitura) */
     --cor-texto-mutado: #5D6D7E;
 
     --cor-primaria: #0A192F;
-    /* Deep Blue (Títulos/Autoridade) */
     --cor-secundaria: #D68C80;
-    /* Rosa Seco / Rose Gold (Destaques/CTAs) */
     --cor-secundaria-hover: #BF756A;
     --cor-branco: #FFFFFF;
 
@@ -77,7 +72,7 @@ video {
     max-width: 100%;
     display: block;
     height: auto;
-}
+} 
 
 a {
     text-decoration: none;
@@ -132,7 +127,6 @@ button {
     transform: translateX(-5px);
 }
 
-/* --- HERO EDITORIAL --- */
 .legal-hero {
     padding: clamp(8rem, 15vh, 12rem) 0 clamp(4rem, 8vh, 6rem);
     background: linear-gradient(to bottom, var(--cor-fundo-suave) 0%, var(--cor-branco) 100%);
@@ -161,7 +155,6 @@ button {
     text-transform: uppercase;
 }
 
-/* --- CORPO DO TEXTO (DIAGRAMAÇÃO) --- */
 .legal-conteudo {
     padding: clamp(3rem, 6vw, 5rem) 0;
 }
@@ -171,7 +164,6 @@ button {
     position: relative;
     padding-left: clamp(1rem, 3vw, 2rem);
     border-left: 2px solid rgba(214, 140, 128, 0.2);
-    /* Linha rosa seco de marcação lateral */
 }
 
 .legal-bloco:last-child {
@@ -183,7 +175,6 @@ button {
     color: var(--cor-primaria);
     margin-bottom: 1.2rem;
     font-family: var(--fonte-padrao);
-    /* Sans-serif para estruturar melhor a documentação */
 }
 
 .legal-bloco p {
@@ -209,7 +200,6 @@ button {
     font-weight: 700;
 }
 
-/* --- FOOTER SIMPLIFICADO --- */
 .legal-footer {
     background-color: var(--cor-primaria);
     color: rgba(255, 255, 255, 0.5);
@@ -230,7 +220,6 @@ button {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.5);
-    /* Ajustado para o fundo escuro do footer legal */
     opacity: 0.6;
     text-decoration: none;
     display: inline-flex;
@@ -293,13 +282,10 @@ button {
     transform: translateX(0);
 }
 
-/* Breakpoint para Mobile Pequeno */
 @media (width <=480px) {
     .btn-voltar span {
         display: none;
     }
-
-    /* Esconde o texto no mobile, deixa só a setinha */
 
     .btn-voltar {
         padding: 0.6rem;

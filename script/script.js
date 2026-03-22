@@ -39,12 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Scroll Reveal Elegante e Otimizado (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal');
 
-    // Configura o observador: dispara quando o elemento está 10% visível na tela
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
-                observer.unobserve(entry.target); // Remove o observador após a animação (otimiza CPU)
+                observer.unobserve(entry.target);
             }
         });
     }, {
@@ -54,17 +53,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
-    // 4. Gerenciamento Otimizado de Cookies
+    // 4. Gerenciamento Otimizado de Cookies (Gatilho: 50% de Scroll)
     const cookieBar = document.getElementById('cookie-bar');
     const aceitarBtn = document.getElementById('aceitar-cookies');
 
     if (cookieBar && aceitarBtn) {
-        // Verifica se o usuário já aceitou os cookies
         if (!localStorage.getItem('cookiesAceitos')) {
-            // Delay de 2.5s para não prejudicar o tempo de carregamento principal (LCP)
-            setTimeout(() => {
-                cookieBar.classList.add('show');
-            }, 2500);
+
+            const showCookieOnScroll = () => {
+                const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (window.scrollY / docHeight) * 100;
+
+                if (scrollPercent >= 50) {
+                    cookieBar.classList.add('show');
+                    window.removeEventListener('scroll', showCookieOnScroll);
+                }
+            };
+
+            window.addEventListener('scroll', showCookieOnScroll, { passive: true });
         }
 
         aceitarBtn.addEventListener('click', () => {
