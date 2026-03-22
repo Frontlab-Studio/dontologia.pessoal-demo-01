@@ -1,0 +1,214 @@
+.secao-legal {
+    padding: clamp(6rem, 12vh, 10rem) 0;
+    background: radial-gradient(circle at top right, rgba(0, 80, 158, 0.05), transparent),
+        var(--cor-fundo);
+    min-height: 100vh;
+}
+
+.container-legal {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+    animation: legalFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* TÍTULO DE IMPACTO */
+.conteudo-juridico h1 {
+    font-family: var(--fonte-titulos);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--cor-primaria);
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.conteudo-juridico h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--cor-secundaria);
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+/* CARD TL;DR */
+.tldr-card {
+    background: rgba(240, 244, 248, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 80, 158, 0.1);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 4rem;
+    box-shadow: 0 10px 30px rgba(0, 34, 68, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.tldr-card:hover {
+    transform: translateY(-5px);
+}
+
+.tldr-card h2 {
+    font-family: var(--fonte-padrao);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-secundaria);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tldr-card h2::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #00FF94;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 255, 148, 0.5);
+}
+
+/* CORPO DO TEXTO JURÍDICO */
+.conteudo-juridico h2 {
+    font-family: var(--fonte-titulos);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--cor-primaria);
+    margin: 3rem 0 1.2rem;
+}
+
+.conteudo-juridico p {
+    font-size: var(--tamanho-texto);
+    color: var(--cor-texto-mutado);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.conteudo-juridico ul {
+    margin: 1.5rem 0;
+    padding-left: 1.2rem;
+}
+
+.conteudo-juridico li {
+    margin-bottom: 0.8rem;
+    color: var(--cor-texto-mutado);
+    position: relative;
+    list-style: none;
+}
+
+.conteudo-juridico li::before {
+    content: '→';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--cor-secundaria);
+    font-weight: bold;
+}
+
+/* BOTÃO DE RETORNO ESTILIZADO */
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4rem;
+    padding: 1rem 2rem;
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+    background: var(--cor-secundaria);
+    transform: translateX(-5px);
+}
+
+/* ANIMAÇÕES */
+@keyframes legalFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 5rem;
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--cor-primaria);
+    border: 1px solid rgba(0, 80, 158, 0.2);
+    border-radius: 50px;
+    font-family: var(--fonte-padrao);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.seta-voltar {
+    font-size: 1.2rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.btn-voltar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--cor-fundo-suave);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+    z-index: -1;
+}
+
+.btn-voltar:hover {
+    color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 8px 20px rgba(0, 80, 158, 0.1);
+    padding-left: 35px;
+}
+
+.btn-voltar:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.btn-voltar:hover .seta-voltar {
+    transform: translateX(-5px) scale(1.2);
+    color: var(--cor-secundaria);
+}
+
+.btn-voltar:active {
+    transform: scale(0.95);
+}
+
+
+/* AJUSTES MOBILE */
+@media (width <=768px) {
+    .secao-legal {
+        padding-top: 7rem;
+    }
+    
+    .tldr-card {
+        padding: 1.5rem;
+    }
+    .btn-voltar {
+        width: 100%;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+}

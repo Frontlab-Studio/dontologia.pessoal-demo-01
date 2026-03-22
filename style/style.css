@@ -1,0 +1,1736 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. BASE E VARIÁVEIS (DESIGN BOUTIQUE)
+   ========================================================================== */
+:root {
+    --cor-fundo: #FAFAFA;
+    /* Off-White Premium */
+    --cor-fundo-suave: #F0EAE6;
+    /* Nude Suave */
+    --cor-fundo-header: rgba(250, 250, 250, 0.95);
+
+    --cor-texto: #2C3E50;
+    /* Azul Petróleo Escuro (Leitura) */
+    --cor-texto-mutado: #5D6D7E;
+
+    --cor-primaria: #0A192F;
+    /* Deep Blue (Títulos/Autoridade) */
+    --cor-secundaria: #D68C80;
+    /* Rosa Seco / Rose Gold (Destaques/CTAs) */
+    --cor-secundaria-hover: #BF756A;
+    --cor-branco: #FFFFFF;
+
+    --fonte-padrao: 'Plus Jakarta Sans', sans-serif;
+    --fonte-titulos: 'Playfair Display', serif;
+    --tamanho-texto: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+
+    --container-width: 1200px;
+    --padding-container: clamp(1rem, 5vw, 2rem);
+    --transicao-padrao: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    touch-action: manipulation;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--fonte-padrao);
+    font-size: var(--tamanho-texto);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-primaria);
+    text-wrap: balance;
+}
+
+img,
+picture,
+svg,
+video {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transicao-padrao);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ==========================================================================
+   2. HEADER E NAVEGAÇÃO
+   ========================================================================== */
+.header-principal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--cor-fundo-header);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(10, 25, 47, 0.05);
+    transition: box-shadow var(--transicao-padrao);
+}
+
+.header-principal.scrolled {
+    box-shadow: 0 4px 20px rgba(10, 25, 47, 0.05);
+}
+
+.container-nav {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 1rem var(--padding-container);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: clamp(40px, 4vw, 55px);
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.nav-lista {
+    list-style: none;
+    display: flex;
+    gap: clamp(1rem, 2vw, 2rem);
+}
+
+.nav-link {
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    color: var(--cor-texto);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-secundaria);
+    transition: var(--transicao-padrao);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--cor-secundaria);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.btn-cta-nav {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    transition: var(--transicao-padrao);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-cta-nav:hover {
+    background-color: var(--cor-secundaria);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(214, 140, 128, 0.2);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* ==========================================================================
+   3. HERO SECTION (DRA. SOLO)
+   ========================================================================== */
+.hero-dra {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    background-color: var(--cor-fundo);
+    padding-top: 85px;
+    overflow: hidden;
+}
+
+.container-hero-dra {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vh, 4rem) var(--padding-container);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 2;
+}
+
+.badge-hero {
+    align-self: flex-start;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-secundaria);
+    background-color: rgba(214, 140, 128, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+}
+
+.hero-titulo {
+    color: var(--cor-primaria);
+    font-size: clamp(2.5rem, 4vw + 1rem, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.destaque-rosa {
+    color: var(--cor-secundaria);
+    font-style: italic;
+}
+
+.hero-subtexto {
+    color: var(--cor-texto-mutado);
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    max-width: 90%;
+}
+
+.hero-botoes {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primario,
+.btn-secundario {
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transicao-padrao);
+    text-align: center;
+}
+
+.btn-primario {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+    box-shadow: 0 8px 20px rgba(214, 140, 128, 0.3);
+}
+
+.btn-primario:hover {
+    background-color: var(--cor-secundaria-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(214, 140, 128, 0.4);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--cor-primaria);
+    border: 1px solid rgba(10, 25, 47, 0.2);
+}
+
+.btn-secundario:hover {
+    border-color: var(--cor-primaria);
+    background-color: rgba(10, 25, 47, 0.03);
+}
+
+.hero-imagem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.shape-fundo {
+    position: absolute;
+    width: clamp(280px, 40vw, 500px);
+    height: clamp(280px, 40vw, 500px);
+    background: linear-gradient(135deg, var(--cor-fundo-suave) 0%, rgba(214, 140, 128, 0.15) 100%);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    z-index: -1;
+    animation: morph 8s ease-in-out infinite alternate;
+}
+
+.img-dra {
+    width: 100%;
+    max-width: 500px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(10, 25, 47, 0.1));
+}
+
+.card-flutuante {
+    position: absolute;
+    bottom: 10%;
+    left: -5%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: float 4s ease-in-out infinite;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.icone-star {
+    color: var(--cor-secundaria);
+    font-size: 1.5rem;
+}
+
+.card-flutuante div {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-flutuante strong {
+    color: var(--cor-primaria);
+    font-size: 0.95rem;
+}
+
+.card-flutuante span {
+    color: var(--cor-texto-mutado);
+    font-size: 0.8rem;
+}
+
+/* Animações Nativas */
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.slide-up-1,
+.slide-up-2,
+.slide-up-3,
+.slide-up-4 {
+    opacity: 0;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slide-up-1 {
+    animation-delay: 0.1s;
+}
+
+.slide-up-2 {
+    animation-delay: 0.2s;
+}
+
+.slide-up-3 {
+    animation-delay: 0.3s;
+}
+
+.slide-up-4 {
+    animation-delay: 0.4s;
+}
+
+.fade-in-right {
+    opacity: 0;
+    animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   4. MEDIA QUERIES ESTRITAS (1024, 768, 360)
+   ========================================================================== */
+
+/* Tablet / Notebook Menor */
+@media (width <=1024px) {
+    .container-nav {
+        padding: 1rem clamp(1rem, 3vw, 2rem);
+    }
+
+    /* Hero Section empilha para garantir a nobreza da foto */
+    .container-hero-dra {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding-top: 2rem;
+    }
+
+    .badge-hero {
+        align-self: center;
+    }
+
+    .hero-subtexto {
+        margin: 0 auto;
+    }
+
+    .hero-botoes {
+        justify-content: center;
+    }
+
+    .card-flutuante {
+        left: auto;
+        right: 5%;
+        bottom: 5%;
+    }
+
+    /* Botão CTA do Header */
+    .btn-cta-nav {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Mobile Padrão */
+@media (width <=768px) {
+
+    /* Header Mobile */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        width: 40px;
+        height: 40px;
+        z-index: 1001;
+    }
+
+    .menu-toggle .linha {
+        display: block;
+        width: 28px;
+        height: 2px;
+        background-color: var(--cor-primaria);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        transform-origin: center;
+    }
+
+    .menu-toggle[aria-expanded="true"] .linha:nth-child(1) {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] .linha:nth-child(2) {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100vw;
+        height: 100dvh;
+        background-color: var(--cor-fundo-suave);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+    }
+
+    .nav-menu.ativo {
+        right: 0;
+    }
+
+    .nav-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        font-family: var(--fonte-titulos);
+    }
+
+    .btn-cta-nav {
+        max-width: 320px;
+        font-size: 1.125rem;
+        padding: 1rem;
+    }
+
+    /* Hero Mobile */
+    .hero-dra {
+        min-height: auto;
+        padding-bottom: 3rem;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+        width: 100%;
+        max-width: 340px;
+        margin: 1rem auto 0;
+    }
+
+    .btn-primario,
+    .btn-secundario {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .shape-fundo {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+/* Mobile Pequeno */
+@media (width <=360px) {
+    .container-nav {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-img {
+        max-width: 130px;
+    }
+
+    .nav-link {
+        font-size: 1.25rem;
+    }
+
+    .btn-cta-nav {
+        padding: 0.8rem;
+        font-size: 1rem;
+        max-width: 280px;
+    }
+
+    .hero-titulo {
+        font-size: 2.25rem;
+    }
+
+    .btn-primario,
+    .btn-secundario {
+        font-size: 0.95rem;
+    }
+
+    .card-flutuante {
+        padding: 0.6rem 1rem;
+        transform: scale(0.9);
+        right: 0;
+    }
+}
+
+/* ==========================================================================
+   5. SEÇÃO SOBRE MIM (BROKEN GRID & AUTORIDADE)
+   ========================================================================== */
+.secao-sobre {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background-color: var(--cor-branco);
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+    overflow: hidden;
+}
+
+.container-sobre {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+}
+
+/* --- COLUNA ESQUERDA (IMAGEM) --- */
+.sobre-imagem-wrapper {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    z-index: 1;
+}
+
+.sobre-decoracao {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 60%;
+    height: 60%;
+    background-color: var(--cor-fundo-suave);
+    /* O tom Nude/Rosa sutil */
+    border-radius: 16px;
+    z-index: -1;
+}
+
+.img-sobre {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(10, 25, 47, 0.08);
+}
+
+.sobre-quote {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    background-color: var(--cor-primaria);
+    /* Azul Petróleo */
+    color: var(--cor-branco);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: 12px;
+    max-width: 80%;
+    box-shadow: 0 15px 30px rgba(10, 25, 47, 0.15);
+    border-bottom: 4px solid var(--cor-secundaria);
+}
+
+.sobre-quote p {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+}
+
+.assinatura-dra {
+    font-family: var(--fonte-titulos);
+    font-weight: 700;
+    color: var(--cor-secundaria);
+    /* Rosa Seco */
+}
+
+/* --- COLUNA DIREITA (CONTEÚDO) --- */
+.sobre-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.badge-secao {
+    align-self: flex-start;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-secundaria);
+}
+
+.titulo-secao {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: var(--cor-primaria);
+}
+
+.textos-sobre {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--cor-texto-mutado);
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+}
+
+.lista-credenciais {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.lista-credenciais li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--cor-primaria);
+    font-weight: 500;
+}
+
+.btn-margin-top {
+    margin-top: 1rem;
+    align-self: flex-start;
+}
+
+/* --- CLASSES DE ANIMAÇÃO NO SCROLL (Injetadas pelo JS) --- */
+.reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.reveal.in-view.slide-up {
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal.in-view.fade-in-left {
+    animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS SEÇÃO SOBRE
+   ========================================================================== */
+@media (width <=1024px) {
+    .container-sobre {
+        gap: 4rem;
+    }
+
+    .sobre-quote {
+        right: -10px;
+        bottom: -20px;
+    }
+}
+
+@media (width <=768px) {
+    .container-sobre {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .sobre-imagem-wrapper {
+        max-width: 450px;
+        margin: 0 auto 2rem;
+    }
+
+    .sobre-quote {
+        right: 10px;
+        bottom: -20px;
+        max-width: 90%;
+    }
+
+    .sobre-conteudo {
+        text-align: center;
+        align-items: center;
+    }
+
+    .badge-secao,
+    .btn-margin-top {
+        align-self: center;
+    }
+
+    .lista-credenciais li {
+        text-align: left;
+    }
+}
+
+@media (width <=360px) {
+    .sobre-quote {
+        padding: 1rem;
+        right: 0;
+        bottom: -15px;
+    }
+
+    .sobre-quote p {
+        font-size: 0.9rem;
+    }
+
+    .lista-credenciais li {
+        font-size: 0.85rem;
+    }
+}
+
+/* ==========================================================================
+   6. SEÇÃO TRATAMENTOS (CARDS PREMIUM & SCROLL SNAP)
+   ========================================================================== */
+.secao-tratamentos {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    /* Usamos a cor suave para contrastar com o branco da seção 'Sobre' */
+    background-color: var(--cor-fundo-suave);
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+}
+
+.container-tratamentos {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+}
+
+.cabecalho-secao {
+    text-align: center;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.badge-centralizado {
+    margin: 0 auto;
+}
+
+.subtitulo-secao {
+    color: var(--cor-texto-mutado);
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- GRID DE CARDS (DESKTOP) --- */
+.grid-tratamentos {
+    display: grid;
+    /* Grid de 4 colunas para o Desktop */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.card-tratamento {
+    background-color: var(--cor-branco);
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 2vw, 2rem);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(10, 25, 47, 0.03);
+    border: 1px solid rgba(10, 25, 47, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.icone-tratamento {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(214, 140, 128, 0.1);
+    /* Rosa Seco clarinho */
+    color: var(--cor-secundaria);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: var(--transicao-padrao);
+}
+
+.icone-tratamento svg {
+    width: 26px;
+    height: 26px;
+}
+
+.card-tratamento h3 {
+    font-size: 1.35rem;
+    line-height: 1.2;
+}
+
+.card-tratamento p {
+    color: var(--cor-texto-mutado);
+    font-size: 0.95rem;
+    flex-grow: 1;
+    /* Empurra o link pro fundo do card */
+}
+
+.link-tratamento {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    margin-top: 1rem;
+    transition: color 0.3s ease;
+}
+
+.link-tratamento .seta {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--cor-secundaria);
+}
+
+/* Interação Desktop */
+@media (width > 1024px) {
+    .card-tratamento:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(10, 25, 47, 0.08);
+        border-color: rgba(214, 140, 128, 0.2);
+    }
+
+    .card-tratamento:hover .icone-tratamento {
+        background-color: var(--cor-secundaria);
+        color: var(--cor-branco);
+        transform: scale(1.05);
+    }
+
+    .link-tratamento:hover {
+        color: var(--cor-secundaria);
+    }
+
+    .link-tratamento:hover .seta {
+        transform: translateX(4px);
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS SEÇÃO TRATAMENTOS 
+   ========================================================================== */
+
+/* Tablet (@media (width <= 1024px)) */
+@media (width <=1024px) {
+    .grid-tratamentos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile Padrão (@media (width <= 768px)) - SCROLL SNAP (PEEK-A-BOO) */
+@media (width <=768px) {
+    .grid-tratamentos {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        margin: 0 calc(var(--padding-container) * -1);
+        padding: 0 var(--padding-container) 1.5rem var(--padding-container);
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .grid-tratamentos::-webkit-scrollbar {
+        display: none;
+    }
+
+    .card-tratamento {
+        flex: 0 0 auto;
+        /* Largura fixa não elástica. Força o próximo card a aparecer na borda */
+        width: 280px;
+        /* Alinha o card na esquerda, deixando o espaço perfeitamente calculado na direita */
+        scroll-snap-align: start;
+        height: auto;
+        transform: none !important;
+        /* Previne bugs de hover do desktop no mobile */
+    }
+}
+
+/* Mobile Pequeno (@media (width <= 360px)) */
+@media (width <=360px) {
+    .card-tratamento {
+        /* Reduz um pouco a largura fixa para garantir que o "corte" do próximo card seja visível em telas minúsculas */
+        width: 250px;
+        padding: 1.25rem;
+    }
+
+    .icone-tratamento {
+        width: 40px;
+        height: 40px;
+    }
+
+    .icone-tratamento svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .card-tratamento h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   7. SEÇÃO EXPERIÊNCIA (BENTO BOX GRID)
+   ========================================================================== */
+.secao-experiencia {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background-color: var(--cor-fundo);
+    /* Off-White para contrastar com a seção acima */
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+}
+
+.container-experiencia {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+}
+
+/* --- BENTO GRID BASE (DESKTOP) --- */
+.bento-grid {
+    display: grid;
+    /* Divide em 3 colunas exatas */
+    grid-template-columns: repeat(3, 1fr);
+    /* Cria 2 linhas de altura fixa para dar formato de mosaico */
+    grid-template-rows: repeat(2, 300px);
+    gap: 1.5rem;
+}
+
+.bento-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--cor-branco);
+    box-shadow: 0 4px 20px rgba(10, 25, 47, 0.04);
+}
+
+.bento-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+/* O Destaque Principal ocupa 2 colunas e 2 linhas inteiras */
+.bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* O Card de Texto ocupa 1 coluna na primeira linha */
+.bento-text {
+    background-color: var(--cor-fundo-suave);
+    padding: clamp(1.5rem, 2.5vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(214, 140, 128, 0.15);
+    /* Borda sutil Rosa Seco */
+}
+
+.bento-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.5rem;
+    color: var(--cor-secundaria);
+}
+
+.bento-text h3 {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 0.8rem;
+}
+
+.bento-text p {
+    color: var(--cor-texto-mutado);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Card Menor de Imagem na segunda linha */
+.bento-small {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* --- OVERLAY DAS IMAGENS --- */
+.bento-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 25, 47, 0.85) 0%, rgba(10, 25, 47, 0.2) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+}
+
+.bento-conteudo h3 {
+    color: var(--cor-branco);
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    margin-bottom: 0.3rem;
+    transform: translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-conteudo p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- INTERAÇÃO (HOVER DESKTOP) --- */
+@media (width > 1024px) {
+    .bento-item:hover .bento-img {
+        transform: scale(1.05);
+    }
+
+    .bento-item:hover .bento-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.3) 60%, transparent 100%);
+    }
+
+    .bento-item:hover .bento-conteudo h3 {
+        transform: translateY(0);
+    }
+
+    .bento-item:hover .bento-conteudo p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS SEÇÃO EXPERIÊNCIA
+   ========================================================================== */
+
+/* Tablet (@media (width <= 1024px)) */
+@media (width <=1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto;
+        /* Linhas dinâmicas */
+    }
+
+    /* O layout muda: Foto Grande em cima (1 linha inteira), os outros 2 cards embaixo dividindo a tela */
+    .bento-large {
+        grid-column: span 2;
+        grid-row: span 1;
+        aspect-ratio: 16 / 9;
+    }
+
+    .bento-text,
+    .bento-small {
+        grid-column: span 1;
+        grid-row: span 1;
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Como não tem mouse, mostra sempre o texto na imagem */
+    .bento-conteudo h3,
+    .bento-conteudo p {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile Padrão (@media (width <= 768px)) */
+@media (width <=768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    /* Tudo empilha em 1 coluna */
+    .bento-large {
+        grid-column: span 1;
+        aspect-ratio: 4 / 3;
+    }
+
+    .bento-text {
+        grid-column: span 1;
+        aspect-ratio: auto;
+    }
+
+    .bento-small {
+        grid-column: span 1;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* Mobile Pequeno (@media (width <= 360px)) */
+@media (width <=360px) {
+    .bento-overlay {
+        padding: 1.2rem;
+    }
+
+    .bento-text {
+        padding: 1.5rem;
+    }
+
+    .bento-text h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* ==========================================================================
+   8. SEÇÃO RESULTADOS (PROVA SOCIAL BOUTIQUE)
+   ========================================================================== */
+.secao-resultados {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background-color: var(--cor-branco);
+    /* Fundo branco para as fotos brilharem */
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+}
+
+.container-resultados {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+}
+
+.grid-resultados {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card-resultado {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    /* Proporção ideal para retratos de rosto/sorriso */
+    background-color: var(--cor-fundo-suave);
+    box-shadow: 0 4px 15px rgba(10, 25, 47, 0.04);
+}
+
+.img-resultado {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+/* Gradiente sutil apenas na base para dar leitura à tag */
+.overlay-resultado {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 25, 47, 0.7) 0%, transparent 40%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+}
+
+.tag-tratamento {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--cor-primaria);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.container-cta-central {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* --- INTERAÇÃO (HOVER DESKTOP) --- */
+@media (width > 1024px) {
+    .card-resultado:hover .img-resultado {
+        transform: scale(1.05);
+    }
+
+    .card-resultado:hover .tag-tratamento {
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS SEÇÃO RESULTADOS
+   ========================================================================== */
+
+/* Tablet (@media (width <= 1024px)) */
+@media (width <=1024px) {
+    .grid-resultados {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .tag-tratamento {
+        transform: translateY(0);
+        /* A tag fica sempre visível no touch */
+    }
+}
+
+/* Mobile Padrão (@media (width <= 768px)) - PEEK-A-BOO SLIDER */
+@media (width <=768px) {
+    .grid-resultados {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        margin: 0 calc(var(--padding-container) * -1) 2rem;
+        padding: 0 var(--padding-container) 1.5rem var(--padding-container);
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .grid-resultados::-webkit-scrollbar {
+        display: none;
+    }
+
+    .card-resultado {
+        flex: 0 0 auto;
+        width: 280px;
+        /* Mantém a largura fixa para o efeito de corte na lateral */
+        scroll-snap-align: start;
+        transform: none !important;
+    }
+}
+
+/* Mobile Pequeno (@media (width <= 360px)) */
+@media (width <=360px) {
+    .card-resultado {
+        width: 240px;
+        /* Reduz um pouco mais para caber na telinha */
+    }
+
+    .overlay-resultado {
+        padding: 1.2rem;
+    }
+
+    .tag-tratamento {
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* ==========================================================================
+   9. SEÇÃO MÉTODO (TIMELINE BOUTIQUE ZIG-ZAG)
+   ========================================================================== */
+.secao-metodo {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background-color: var(--cor-fundo-suave);
+    /* Fundo nude elegante */
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+}
+
+.container-metodo {
+    max-width: 1000px;
+    /* Levemente mais estreito para focar a leitura */
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+}
+
+/* --- ESTRUTURA DA TIMELINE --- */
+.timeline-boutique {
+    position: relative;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 6vw, 5rem);
+}
+
+/* Linha central guia (Desktop) */
+.timeline-boutique::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--cor-secundaria), transparent);
+    transform: translateX(-50%);
+    opacity: 0.3;
+}
+
+.passo-boutique {
+    position: relative;
+    width: 50%;
+    /* O conteúdo fica alternado via nth-child */
+}
+
+/* Bolinha conectora na linha do tempo */
+.passo-boutique::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--cor-branco);
+    border: 3px solid var(--cor-secundaria);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(214, 140, 128, 0.4);
+    transition: transform 0.4s ease;
+}
+
+.passo-boutique:hover::after {
+    transform: scale(1.3);
+    background-color: var(--cor-secundaria);
+}
+
+/* Lado Esquerdo (Ímpares) */
+.passo-boutique:nth-child(odd) {
+    left: 0;
+    padding-right: clamp(2rem, 4vw, 3rem);
+    text-align: right;
+}
+
+.passo-boutique:nth-child(odd)::after {
+    right: -6px;
+    /* Alinha a bolinha no centro exato (50% da tela) */
+}
+
+/* Lado Direito (Pares) */
+.passo-boutique:nth-child(even) {
+    left: 50%;
+    padding-left: clamp(2rem, 4vw, 3rem);
+    text-align: left;
+}
+
+.passo-boutique:nth-child(even)::after {
+    left: -6px;
+}
+
+/* --- CONTEÚDO DO PASSO --- */
+.passo-conteudo {
+    background-color: var(--cor-branco);
+    padding: clamp(2rem, 3vw, 2.5rem);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(10, 25, 47, 0.03);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+/* O "01", "02" gigante como background */
+.passo-numero {
+    position: absolute;
+    top: -15px;
+    font-size: 8rem;
+    font-weight: 700;
+    font-family: var(--fonte-titulos);
+    color: rgba(214, 140, 128, 0.05);
+    /* Rosa Seco super transparente */
+    line-height: 1;
+    z-index: 0;
+    user-select: none;
+    transition: color 0.4s ease;
+}
+
+/* Posicionamento do número acompanhando a alternância */
+.passo-boutique:nth-child(odd) .passo-numero {
+    left: 10px;
+}
+
+.passo-boutique:nth-child(even) .passo-numero {
+    right: 10px;
+}
+
+.passo-conteudo h3 {
+    position: relative;
+    z-index: 1;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+}
+
+.passo-conteudo p {
+    position: relative;
+    z-index: 1;
+    color: var(--cor-texto-mutado);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Interação Desktop */
+@media (width > 1024px) {
+    .passo-conteudo:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(10, 25, 47, 0.08);
+    }
+
+    .passo-conteudo:hover .passo-numero {
+        color: rgba(214, 140, 128, 0.15);
+        /* Acende levemente o número gigante no hover */
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS SEÇÃO MÉTODO
+   ========================================================================== */
+
+/* Tablet (@media (width <= 1024px)) */
+@media (width <=1024px) {
+    .timeline-boutique {
+        gap: 2rem;
+    }
+
+    .passo-numero {
+        font-size: 6rem;
+        top: 0;
+    }
+}
+
+/* Mobile Padrão (@media (width <= 768px)) - MUDA PARA LINHA À ESQUERDA */
+@media (width <=768px) {
+    .timeline-boutique::before {
+        left: 20px;
+        /* Joga a linha para a esquerda */
+        transform: none;
+    }
+
+    .passo-boutique {
+        width: 100%;
+    }
+
+    /* Reseta a alternância para manter tudo alinhado à esquerda no celular */
+    .passo-boutique:nth-child(odd),
+    .passo-boutique:nth-child(even) {
+        left: 0;
+        padding-left: 50px;
+        /* Espaço para a linha e a bolinha */
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .passo-boutique:nth-child(odd)::after,
+    .passo-boutique:nth-child(even)::after {
+        left: 14px;
+        /* Centraliza a bolinha sobre a nova posição da linha */
+        right: auto;
+    }
+
+    .passo-boutique:nth-child(odd) .passo-numero,
+    .passo-boutique:nth-child(even) .passo-numero {
+        right: 10px;
+        /* Joga o número gigante pra direita sempre no mobile */
+        left: auto;
+    }
+}
+
+/* Mobile Pequeno (@media (width <= 360px)) */
+@media (width <=360px) {
+    .timeline-boutique::before {
+        left: 15px;
+    }
+
+    .passo-boutique:nth-child(odd),
+    .passo-boutique:nth-child(even) {
+        padding-left: 40px;
+    }
+
+    .passo-boutique:nth-child(odd)::after,
+    .passo-boutique:nth-child(even)::after {
+        left: 9px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .passo-conteudo {
+        padding: 1.5rem;
+    }
+
+    .passo-conteudo h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* ==========================================================================
+   10. SEÇÃO FAQ (ACCORDION NATIVO & MINIMALISTA)
+   ========================================================================== */
+.secao-faq {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background-color: var(--cor-branco);
+    content-visibility: auto;
+    contain-intrinsic-size: 600px;
+}
+
+.container-faq {
+    /* Largura reduzida (800px) para otimizar o conforto visual da leitura longa */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+}
+
+.lista-faq {
+    display: flex;
+    flex-direction: column;
+    /* Linha de separação no topo geral da lista */
+    border-top: 1px solid rgba(10, 25, 47, 0.1);
+    margin-top: 2rem;
+}
+
+.item-faq {
+    border-bottom: 1px solid rgba(10, 25, 47, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Esconde a seta padrão feia do <details> nos navegadores */
+.item-faq>summary::-webkit-details-marker {
+    display: none;
+}
+
+.pergunta-faq {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1.2rem, 3vw, 1.8rem) 0;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    font-weight: 600;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.3s ease;
+    touch-action: manipulation;
+}
+
+.item-faq[open] .pergunta-faq {
+    color: var(--cor-secundaria);
+}
+
+/* Ícone interativo via CSS puro */
+.icone-faq {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--cor-secundaria);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.item-faq[open] .icone-faq {
+    transform: rotate(45deg);
+    /* O '+' vira um 'x' suavemente */
+}
+
+.resposta-faq {
+    padding: 0 0 clamp(1.2rem, 3vw, 1.8rem) 0;
+    color: var(--cor-texto-mutado);
+    font-size: clamp(0.95rem, 1.5vw, 1rem);
+    line-height: 1.7;
+    animation: fadeInSlideDown 0.4s ease-out forwards;
+}
+
+/* Animação de revelação da resposta */
+@keyframes fadeInSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito Hover Sutil Desktop */
+@media (width > 1024px) {
+    .pergunta-faq:hover {
+        color: var(--cor-secundaria);
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS SEÇÃO FAQ
+   ========================================================================== */
+
+/* Tablet (@media (width <= 1024px)) */
+/* Não exige mudanças drásticas, as funções clamp() e o max-width já resolvem a fluidez */
+
+/* Mobile Padrão (@media (width <= 768px)) */
+@media (width <=768px) {
+    .icone-faq {
+        font-size: 1.25rem;
+    }
+}
+
+/* Mobile Pequeno (@media (width <= 360px)) */
+@media (width <=360px) {
+    .pergunta-faq {
+        gap: 0.8rem;
+    }
+}
