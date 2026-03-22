@@ -54,5 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+    // 4. Gerenciamento Otimizado de Cookies
+    const cookieBar = document.getElementById('cookie-bar');
+    const aceitarBtn = document.getElementById('aceitar-cookies');
+
+    if (cookieBar && aceitarBtn) {
+        // Verifica se o usuário já aceitou os cookies
+        if (!localStorage.getItem('cookiesAceitos')) {
+            // Delay de 2.5s para não prejudicar o tempo de carregamento principal (LCP)
+            setTimeout(() => {
+                cookieBar.classList.add('show');
+            }, 2500);
+        }
+
+        aceitarBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAceitos', 'true');
+            cookieBar.classList.remove('show');
+        });
+    }
 
 });

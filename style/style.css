@@ -1734,3 +1734,514 @@ button {
         gap: 0.8rem;
     }
 }
+
+/* ==========================================================================
+   11. FOOTER BOUTIQUE & ASSINATURA FRONTLAB
+   ========================================================================== */
+.footer-boutique {
+    background-color: var(--cor-primaria);
+    /* Fundo Deep Blue */
+    color: var(--cor-branco);
+    padding: clamp(4rem, 8vw, 6rem) 0 0 0;
+}
+
+.container-footer {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-container) clamp(3rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(2rem, 4vw, 3rem);
+}
+
+.logo-footer {
+    filter: brightness(0) invert(1);
+    /* Força a logo a ficar branca */
+    margin-bottom: 1.5rem;
+}
+
+.footer-descricao {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-footer {
+    color: var(--cor-branco);
+    font-family: var(--fonte-padrao);
+    /* Foge do Serifado aqui para melhor leitura */
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.titulo-footer::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--cor-secundaria);
+}
+
+.links-footer {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.links-footer a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.links-footer a:hover {
+    color: var(--cor-secundaria);
+    padding-left: 5px;
+}
+
+.contato-footer {
+    font-style: normal;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contato-footer a {
+    color: var(--cor-branco);
+    transition: color 0.3s ease;
+}
+
+.contato-footer a:hover {
+    color: var(--cor-secundaria);
+}
+
+/* Redes Sociais do Footer */
+.redes-sociais {
+    display: flex;
+    gap: 1rem;
+}
+
+.redes-sociais .icon {
+    width: 38px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--cor-branco);
+    transition: background 0.3s ease, transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.redes-sociais a:hover .icon {
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    transform: translateY(-3px);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- BOTTOM BAR --- */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.15);
+    /* Escurece levemente o rodapé final */
+    padding: 1.5rem 0;
+}
+
+.container-bottom {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-container);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.links-legais {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.links-legais a {
+    transition: color 0.3s ease;
+}
+
+.links-legais a:hover {
+    color: var(--cor-branco);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   ASSINATURA FRONTLAB STUDIO (ADAPTADA)
+   ========================================================================== */
+.frontlab-signature {
+    position: relative;
+    font-family: monospace, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    /* Ajustado para o fundo escuro */
+    opacity: 0.6;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.frontlab-signature::before,
+.frontlab-signature::after {
+    content: '';
+    opacity: 0;
+    color: var(--cor-secundaria);
+    /* Mapeado para o Rosa Seco do site */
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.frontlab-signature::before {
+    content: '[';
+    transform: translateX(10px);
+}
+
+.frontlab-signature::after {
+    content: ']';
+    transform: translateX(-10px);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #00ff66;
+    /* Mantido o verde tech da sua marca */
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 255, 102, 0.5);
+    animation: serverPulse 2s infinite;
+}
+
+@keyframes serverPulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 12px rgba(0, 255, 102, 0.8);
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+.frontlab-signature:hover {
+    opacity: 1;
+    color: var(--cor-branco);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.frontlab-signature:hover::before,
+.frontlab-signature:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ==========================================================================
+   BOTÃO WHATSAPP FLUTUANTE
+   ========================================================================== */
+.btn-whatsapp-flutuante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: pulso-whatsapp 2s infinite;
+}
+
+.tooltip-whatsapp {
+    position: absolute;
+    right: 75px;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-whatsapp-flutuante:hover {
+    transform: scale(1.1) rotate(5deg);
+    animation-play-state: paused;
+}
+
+.btn-whatsapp-flutuante:hover .tooltip-whatsapp {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes pulso-whatsapp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS FOOTER
+   ========================================================================== */
+/* Tablet (@media (width <= 1024px)) */
+@media (width <=1024px) {
+    .container-footer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Padrão (@media (width <= 768px)) */
+@media (width <=768px) {
+    .container-footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .titulo-footer::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .redes-sociais {
+        justify-content: center;
+    }
+
+    .container-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .btn-whatsapp-flutuante {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .tooltip-whatsapp {
+        display: none;
+        /* Remove tooltip no celular para evitar sobreposição */
+    }
+}
+
+/* Mobile Pequeno (@media (width <= 360px)) */
+@media (width <=360px) {
+    .links-legais {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* ==========================================================================
+   WHATSAPP BOUTIQUE (EFEITO RIPPLE CRIATIVO)
+   ========================================================================== */
+.btn-whatsapp-flutuante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Ondas de som (Ripple) */
+.btn-whatsapp-flutuante::before,
+.btn-whatsapp-flutuante::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #25D366;
+    z-index: 1;
+    animation: rippleWave 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-whatsapp-flutuante::after {
+    animation-delay: 1s;
+    /* Atrasa a segunda onda para dar fluidez */
+}
+
+@keyframes rippleWave {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+.tooltip-whatsapp {
+    position: absolute;
+    right: 80px;
+    background: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(15px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-whatsapp-flutuante:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.btn-whatsapp-flutuante:hover::before,
+.btn-whatsapp-flutuante:hover::after {
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+.btn-whatsapp-flutuante:hover .tooltip-whatsapp {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ==========================================================================
+   COOKIE BAR BOUTIQUE (GLASSMORPHISM FLUTUANTE)
+   ========================================================================== */
+.cookie-boutique {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(10, 25, 47, 0.05);
+    padding: 1.5rem;
+    border-radius: 20px;
+    z-index: 2000;
+    box-shadow: 0 20px 40px rgba(10, 25, 47, 0.1);
+    transform: translateY(150%) scale(0.9);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.cookie-boutique.show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.cookie-conteudo p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--cor-texto-mutado);
+    margin-bottom: 1.2rem;
+}
+
+.cookie-botoes {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.btn-cookie {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+    border-radius: 50px;
+}
+
+.link-cookie {
+    font-size: 0.85rem;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: var(--transicao-padrao);
+}
+
+.link-cookie:hover {
+    color: var(--cor-secundaria);
+    text-decoration-color: var(--cor-secundaria);
+}
+
+/* Breakpoints para Componentes Flutuantes */
+@media (width <=768px) {
+    .btn-whatsapp-flutuante {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .tooltip-whatsapp {
+        display: none;
+    }
+
+    .cookie-boutique {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        max-width: none;
+        padding: 1.2rem;
+    }
+}
